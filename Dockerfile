@@ -3,22 +3,21 @@ FROM node:23-alpine AS builder
 
 WORKDIR /opt/lavamusic
 
-# Install build dependencies including Python and make for native modules
-RUN apk add --no-cache python3 make g++
+# Install pnpm and build dependencies
+RUN corepack enable && corepack prepare pnpm@latest --activate && \
+    apk add --no-cache python3 make g++
 
 # Copy package files first for better layer caching
-COPY package*.json ./
-COPY prisma/schema.prisma ./prisma/
+COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies (using npm install instead of ci)
-RUN npm install --legacy-peer-deps
+# Install dependencies using pnpm
+RUN pnpm install --frozen-lockfile
 
 # Copy remaining source files
 COPY . .
 
-# Build TypeScript and generate Prisma client
-RUN npm run build && \
-    npx prisma generate
+# Build
+RUN pnpm run build && pnpm run push
 
 # Stage 2: Production image
 FROM node:23-alpine
@@ -29,21 +28,23 @@ ENV NODE_ENV=production \
 
 WORKDIR /opt/lavamusic
 
-# Install runtime dependencies
-RUN apk add --no-cache --virtual .runtime-deps \
+# Install pnpm and runtime dependencies
+RUN corepack enable && corepack prepare pnpm@latest --activate && \
+    apk add --no-cache --virtual .runtime-deps \
     openssl \
     ca-certificates \
     tzdata \
     curl
 
-# Install dotenvx
-RUN curl -sfS https://dotenvx.sh | sh
 
-# Copy necessary files from builder
+# Copy package files for production dependencies
+COPY --from=builder --chown=node:node /opt/lavamusic/package.json /opt/lavamusic/pnpm-lock.yaml ./
+
+# Install production dependencies only
+RUN pnpm install --prod --frozen-lockfile
+
+# Copy built files from builder
 COPY --from=builder --chown=node:node /opt/lavamusic/dist ./dist
-COPY --from=builder --chown=node:node /opt/lavamusic/node_modules ./node_modules
-COPY --from=builder --chown=node:node /opt/lavamusic/prisma ./prisma
-COPY --from=builder --chown=node:node /opt/lavamusic/package*.json ./
 COPY --from=builder --chown=node:node /opt/lavamusic/src/utils/LavaLogo.txt ./src/utils/LavaLogo.txt
 COPY --from=builder --chown=node:node /opt/lavamusic/locales ./locales
 
@@ -61,4 +62,4 @@ LABEL maintainer="appujet <sdipedit@gmail.com>" \
       org.opencontainers.image.licenses="MIT"
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
-CMD ["dotenvx", "run", "--", "node", "dist/index.js"]
+CMD ["node", "dist/index.js"]

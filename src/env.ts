@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { config } from "dotenv";
+
+config();
 
 const LavalinkNodeSchema = z.object({
 	id: z.string(),
@@ -80,7 +83,6 @@ const envSchema = z.object({
 type Env = z.infer<typeof envSchema>;
 
 export const env: Env = envSchema.parse(process.env);
-
 for (const key in env) {
 	if (!(key in env)) {
 		throw new Error(

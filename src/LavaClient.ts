@@ -1,9 +1,8 @@
-import { type ClientOptions, GatewayIntentBits } from "discord.js";
+import { type ClientOptions, GatewayIntentBits, Options } from "discord.js";
 import { env } from "./env";
 import Lavamusic from "./structures/Lavamusic";
 
 const {
-	GuildMembers,
 	MessageContent,
 	GuildVoiceStates,
 	GuildMessages,
@@ -17,10 +16,28 @@ const clientOptions: ClientOptions = {
 		GuildMessages,
 		MessageContent,
 		GuildVoiceStates,
-		GuildMembers,
 		GuildMessageTyping,
 	],
 	allowedMentions: { parse: ["users", "roles"], repliedUser: false },
+	makeCache: Options.cacheWithLimits({
+		...Options.DefaultMakeCacheSettings,
+		ReactionManager: 0,
+		GuildScheduledEventManager: 0,
+		DMMessageManager: 0,
+		StageInstanceManager: 0,
+		GuildEmojiManager: 0,
+		GuildStickerManager: 0,
+		MessageManager: {
+			maxSize: 100,
+			keepOverLimit: (m) => m.author.id === m.client.user.id,
+		},
+		GuildMemberManager: {
+			maxSize: 100,
+			keepOverLimit: (m) => m.user.id === m.client.user.id,
+		},
+		UserManager: 100,
+		PresenceManager: 0,
+	})
 };
 
 const client = new Lavamusic(clientOptions);

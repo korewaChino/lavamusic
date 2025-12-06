@@ -534,7 +534,7 @@ Lavalink/logs
 Lavalink/plugins
 Lavalink/application.yml
 Lavalink/Lavalink.jar
-prisma/migrations
-prisma/lavamusic.db
+lavamusic.db
 package-lock.json
-pnpm-lock.yaml
+
+/generated/prisma

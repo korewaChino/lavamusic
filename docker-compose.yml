@@ -66,6 +66,7 @@ services:
         environment:
             # lavalink nodes
             - NODES=[{"id":"LavaMusic","host":"lavalink","port":2333,"authorization":"youshallnotpass"}]
+            - DATABASE_URL="file:./lavamusic.db"
             # database url
         #    - DATABASE_URL= put your database url here (mongodb or postgres)
         #   - DATABASE_URL=postgresql://lavamusic:lavamusic@postgres:5432/lavamusic (for postgres)
