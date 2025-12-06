@@ -25,16 +25,16 @@ export default class ServerData {
     );
   }
 
-  private async createGuild(guildId: string): Promise<Guild> {
-    return await this.prisma.guild.upsert({
-      where: { guildId },
-      update: {},
-      create: {
-        guildId,
-        prefix: env.PREFIX,
-      },
-    });
-  }
+	private async createGuild(guildId: string): Promise<Guild> {
+		return await this.prisma.guild.upsert({
+			where: { guildId },
+			update: {},
+			create: {
+				guildId,
+				prefix: env.PREFIX,
+			},
+		});
+	}
 
 	public async setPrefix(guildId: string, prefix: string): Promise<void> {
 		await this.prisma.guild.upsert({
