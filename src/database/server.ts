@@ -10,15 +10,22 @@ import {
 import { env } from "../env";
 
 export default class ServerData {
-	private static prisma = new PrismaClient();
-	private prisma: PrismaClient;
+  private static prisma = new PrismaClient();
+  private prisma: PrismaClient;
 
-	constructor() {
-		// reuse the singleton
-		this.prisma = ServerData.prisma;
-	}
+  constructor() {
+    // reuse the singleton
+    this.prisma = ServerData.prisma;
+  }
 
-	public async get(guildId: string): Promise<Guild> {
+  public async get(guildId: string): Promise<Guild> {
+    return (
+      (await this.prisma.guild.findUnique({ where: { guildId } })) ??
+      this.createGuild(guildId)
+    );
+  }
+
+  private async createGuild(guildId: string): Promise<Guild> {
     return await this.prisma.guild.upsert({
       where: { guildId },
       update: {},
@@ -27,7 +34,7 @@ export default class ServerData {
         prefix: env.PREFIX,
       },
     });
-	}
+  }
 
 	public async setPrefix(guildId: string, prefix: string): Promise<void> {
 		await this.prisma.guild.upsert({
