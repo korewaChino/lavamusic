@@ -43,7 +43,10 @@ export default class Skip extends Command {
 				ctx.locale("event.message.no_music_playing"),
 			);
 		const autoplay = player.get<boolean>("autoplay");
-		if (!autoplay && player.queue.tracks.length === 0) {
+		if (
+		!autoplay &&
+    !player.queue.current &&
+    player.queue.tracks.length === 0) {
 			return await ctx.sendMessage({
 				embeds: [
 					embed
