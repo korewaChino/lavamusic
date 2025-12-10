@@ -1,8 +1,9 @@
 import { eq, and } from "drizzle-orm";
-import { db } from "./index";
-import { guild, stay, setup, dj, role, playlist } from "./schemas";
+import { db, schema } from "./index";
 import { env } from "../env";
 import { randomUUID } from "crypto";
+
+const { guild, setup, stay, dj, role, playlist } = schema;
 
 export default class ServerData {
 	// -----------------------------
