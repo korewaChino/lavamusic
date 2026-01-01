@@ -538,6 +538,13 @@
 		},
 		"fairplay": {
 			"description": "Set the bot to play music fairly"
+		},
+		"move": {
+			"description": "Move a track from one position to another in the queue",
+			"options": {
+				"from": "The position of the track to move",
+				"to": "The position to move the track to"
+			}
 		}
 	},
 	"buttons": {
