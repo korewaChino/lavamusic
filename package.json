@@ -53,8 +53,10 @@
     "@types/pg": "^8.16.0",
     "@types/signale": "^1.4.7",
     "drizzle-kit": "^0.31.8",
+    "mermaid": "^11.12.2",
     "typescript": "^5.9.3",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.3.14",

@@ -1,66 +1,84 @@
-## 🐳 Docker Lovers' Shortcut (One-Click Setup!)
+# Docker Deployment
 
-Prefer containers? We've got you! Docker automatically handles database setup and keeps your environment clean.
+Docker is the easiest way to get LavaMusic up and running with a single command. It handles all dependencies, databases, and networking for you.
 
-Our setup uses **Docker Compose Profiles**, allowing you to choose exactly which services to run based on your needs.
+---
 
-## 🚀 Setup
+## Prerequisites
 
-### 1. 📥 Prerequisites:
-- Install [Docker](https://docs.docker.com/get-started/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install) if you haven't.  
+Before starting, ensure you have the following installed:
 
-### 2. ⚙️ Configuration:
-- Copy the template files:
+* **[Docker](https://docs.docker.com/get-started/get-docker/)**
+* **[Docker Compose](https://docs.docker.com/compose/install/)**
 
-   ```bash
-   cp .env.example .env
-   cp Lavalink/example.application.yml Lavalink/application.yml
-   ```
+---
 
-### 3. 🚀 Choose Services
+## Quick Start
 
-#### 🟢 Standard (Bot + Local Lavalink node)
-**Recommended for most users.**  
-Uses `PGLite` and hosts `Lavalink` locally.
+### 1. Prepare Configuration
+
+Copy the template files and fill in your bot token and other credentials in the `.env` file.
+
+```bash
+cp .env.example .env
+cp Lavalink/example.application.yml Lavalink/application.yml
+```
+
+### 2. Launch with Profiles
+
+LavaMusic uses **Docker Compose Profiles** so you can choose exactly what you need.
+
+#### Standard Setup (Recommended)
+
+This launches the **Bot**, a local **Lavalink node**, and uses **PGLite** for the database.
 
 ```bash
 docker compose --profile lavalink up -d
 ```
 
-#### 🟡 Lightweight (Bot only)
-Use this if you already have an external `Lavalink` node hosted elsewhere.
+#### Lightweight Setup
 
-> [!IMPORTANT]
-> **You must configure the Postgres `DATABASE_URL` in `compose.yaml` or set it in `.env`.**
-**Edit `.env` to set your external `NODES` first.**
+Use this if you are using an **external Lavalink node** (e.g., from a provider).
 
 ```bash
 docker compose up -d
 ```
 
-#### 🔴 Full (Bot + Lavalink + PostgreSQL)
-**Recommended for large shards.**  
-Runs a dedicated `PostgreSQL` container alongside the bot and `Lavalink`.  
+#### Full Production Setup
 
-> [!IMPORTANT]
-**You must configure the Postgres `DATABASE_URL` in `compose.yaml` or set it in `.env`.**
+Runs the **Bot**, **Lavalink**, and a dedicated **PostgreSQL** database container.
+
 ```bash
 docker compose --profile all up -d
 ```
 
-🎉 Boom! Bot, Lavalink, and PostgreSQL database—all running automatically with no extra setup needed!
+---
 
-### ⬆️ Want to update later?
->[!IMPORTANT]
-Use the same profile flag you used during startup (e.g., `--profile lavalink`)
+## Maintenance
+
+### Updating the Bot
+
+To update to the latest version of LavaMusic, use the following commands:
+
 ```bash
 docker compose pull
 docker compose up -d --force-recreate
 ```
 
-> [!NOTE]
-> If you prefer **SQLite** or **PGLite** with Docker, you need to run database setup commands manually before starting Docker.
-> 
-> Ensure your `DATABASE_URL` points to the persistent volume:
-> - **PGLite:** `DATABASE_URL="file:./lavamusic-pgdata"` (Default)
-> - **SQLite:** `DATABASE_URL="file:./lavamusic.db"`
+*Note: Make sure to use the same profiles (e.g., `--profile lavalink`) you used during the initial setup.*
+
+---
+
+## Technical Notes
+
+### Persistence
+
+The database data is stored in a volume named `lavamusic_data` by default. This ensures your playlists and settings are not lost when the container restarts.
+
+### Environment Variables
+
+Most configuration can be done directly in the `.env` file. Docker Compose will automatically inject these into the container environments.
+
+::: info NEED HELP?
+If you encounter any issues with Docker, feel free to join our [Support Server](https://mintone.tech/support) for assistance!
+:::

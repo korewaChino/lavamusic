@@ -1,61 +1,61 @@
-# ❓ Frequently Asked Questions (FAQ)
+# Frequently Asked Questions (FAQ)
 
-Find answers to the most common questions and issues below.
+Find answers to common questions and solutions to frequent issues below.
 
 ---
 
-## 🚀 General
+## General
 
 ### Is LavaMusic free?
 
-Yes! LavaMusic is 100% open-source and free to use. There are no hidden fees or paywalls for premium features.
+Yes! LavaMusic is 100% open-source and free to use. There are no paywalls or hidden fees.
 
 ### Which audio sources are supported?
 
-We support YouTube, Spotify, SoundCloud, Apple Music, and direct file links (MP3, WAV, etc.).
+We support YouTube, Spotify, SoundCloud, Apple Music, and direct file links (MP3, WAV, FLAC, etc.).
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### The bot is online but not playing music
 
-1. Check if your **Lavalink server** is running at `localhost:2333`.
-2. Ensure you have provided a valid Lavalink password in your `.env` file.
-3. Check the console logs for any connection errors.
+* **Check Lavalink**: Ensure your Lavalink server is active (default: `localhost:2333`).
+* **Verify Credentials**: Double-check the Lavalink password in both `.env` and `application.yml`.
+* **Check Permissions**: Ensure the bot has `Connect` and `Speak` permissions in your voice channel.
 
-### Why is my bot lagging or skipping?
+### Why is the music lagging or skipping?
 
-Lag is usually caused by:
+Lag is typically caused by:
 
-- Slow internet connection on the host machine.
-- High CPU usage on the Lavalink server.
-- Using a public Lavalink node that is overloaded. We recommend hosting your own!
+* Insufficient CPU/Memory on the host machine.
+* Slow network connection between the bot and Lavalink or Lavalink and the audio source.
+* Using an overloaded public Lavalink node. We highly recommend hosting your own node.
 
-### I get a "Permission Denied" error
+### "Permission Denied" errors
 
-Make sure the bot has the following permissions in your Discord server:
+Ensure the bot has the following mandatory permissions:
 
-- `View Channels`
-- `Send Messages`
-- `Embed Links`
-- `Connect`
-- `Speak`
+* `View Channels`
+* `Send Messages`
+* `Embed Links`
+* `Connect`
+* `Speak`
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### How do I change the prefix?
 
-You can use the `/prefix set` command if you have higher permissions, or change the default prefix in your `.env` file.
+You can update the `PREFIX` variable in your `.env` file or use the `/prefix set` command if you have administrator permissions.
 
 ### How do I setup DJ roles?
 
-Use the `/dj add <role>` command to specify which roles can control the music.
+Use the `/dj add <role>` command to register roles that can control the music player (skip, pause, stop, etc.).
 
 ---
 
 ::: tip STILL STUCK?
-If you couldn't find your answer here, feel free to join our [Support Server](https://mintone.tech/support). We're happy to help!
+If your question isn't answered here, join our community on [Discord](https://mintone.tech/support) for instant support!
 :::

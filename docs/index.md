@@ -10,13 +10,13 @@ hero:
     alt: LavaMusic Logo
   actions:
     - theme: brand
-      text: 🌟 Get Started
+      text: Get Started
       link: /installation
     - theme: alt
-      text: 📖 Read Guide
+      text: Read Guide
       link: /installation#step-by-step-setup
     - theme: alt
-      text: 🛡️ Configuration
+      text: Configuration
       link: /configuration
 
 features:
@@ -40,12 +40,12 @@ features:
     details: No paywalls, no hidden fees. All premium features are available to everyone.
 ---
 
-## 🚀 Setup in 3 Simple Steps
+## Setup in 3 Simple Steps
 
 Getting started with LavaMusic is easier than ever. Follow these simple steps to bring music to your server.
 
 1. **Clone the Repo**: `git clone https://github.com/botxlab/lavamusic.git`
-2. **Configure `.env`**: Fill in your Bot Token and Client ID.
+2. **Configure .env**: Fill in your Bot Token and Client ID.
 3. **Run with Bun**: `bun run start` (Make sure you have [Bun](https://bun.sh) installed!)
 
 ::: tip NEW TO THIS?
@@ -54,21 +54,21 @@ Check out our [Beginner's Installation Guide](/installation) for a detailed, ste
 
 ---
 
-## 🎨 Why LavaMusic?
+## Why LavaMusic?
 
-LavaMusic is designed for server owners who care about **quality**. We prioritize stability, speed, and ease of use.
+LavaMusic is designed for server owners who care about quality. We prioritize stability, speed, and ease of use.
 
-### 🔌 Powerful Integrations
+### Powerful Integrations
 
-Sync with **Spotify**, **SoundCloud**, and **YouTube** seamlessly. Import your favorite playlists and share them with your community.
+Sync with Spotify, SoundCloud, and YouTube seamlessly. Import your favorite playlists and share them with your community.
 
-### ⚙️ Advanced Customization
+### Advanced Customization
 
-Control everything from **DJ roles** and volume limits to custom server prefixes. Make the bot truly yours.
+Control everything from DJ roles and volume limits to custom server prefixes. Make the bot truly yours.
 
-### 🛡️ Secure & Reliable
+### Secure & Reliable
 
-Built with modern technologies like **TypeScript** and **Drizzle ORM**, ensuring your data is safe and the bot runs smoothly 24/7.
+Built with modern technologies like TypeScript and Drizzle ORM, ensuring your data is safe and the bot runs smoothly 24/7.
 
 ---
 
