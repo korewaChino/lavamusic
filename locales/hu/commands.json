@@ -1,0 +1,639 @@
+{
+    "247": {
+        "description": "A bot beállítása, hogy a hangcsatornában maradjon",
+        "errors": {
+            "not_in_voice": "A parancs használatához hangcsatornában kell lenned.",
+            "generic": "Hiba történt a parancs végrehajtása közben."
+        },
+        "messages": {
+            "disabled": "`✅` | 24/7 mód `KIKAPCSOLVA`.",
+            "enabled": "`✅` | 24/7 mód `BEKAPCSOLVA`."
+        }
+    },
+    "fairplay": {
+        "description": "A bot beállítása, hogy igazságosan játssza le a zenét a felhasználók között.",
+        "errors": {
+            "not_in_voice": "A parancs használatához hangcsatornában kell lenned.",
+            "generic": "Hiba történt a parancs végrehajtása közben."
+        },
+        "messages": {
+            "disabled": "`✅` | Fairplay mód `KIKAPCSOLVA`.",
+            "enabled": "`✅` | Fairplay mód `BEKAPCSOLVA`."
+        }
+    },
+    "ping": {
+        "description": "Megmutatja a bot késleltetését.",
+        "content": "Pingelés...",
+        "bot_latency": "Bot késleltetés",
+        "api_latency": "API késleltetés",
+        "requested_by": "Kérte {author}"
+    },
+    "lavalink": {
+        "description": "Megmutatja az aktuális Lavalink csomópont statisztikáit.",
+        "title": "Lavalink Statisztikák",
+        "content": "Zenelejátszók: {players}\nLejátszás alatt álló zenék: {playingPlayers}\nMűködési idő: {uptime}\nMagok: {cores} mag\nMemóriahasználat: {used} / {reservable}\nRendszerterhelés: {systemLoad}%\nLavalink terhelés: {lavalinkLoad}%",
+        "page_info": "Oldal: {index} / {total}"
+    },
+    "invite": {
+        "description": "Bot meghívó linkje.",
+        "content": "Meghívhatsz az alábbi gombra kattintva. Bármilyen hiba vagy leállás? Csatlakozz a support szerverhez!"
+    },
+    "help": {
+        "description": "Megmutatja a súgó menüt.",
+        "options": {
+            "command": "A parancs, amiről információt szeretnél kapni"
+        },
+        "content": "Szia! Én vagyok a(z) `{bot}`, egy zenebot, ami a [`Lavamusic`](https://github.com/appujet/lavamusic) és a `Discord.js` segítségével készült.\nA `{prefix}help <command>` paranccsal több információt kaphatsz egy adott parancsról.",
+        "title": "Súgó Menü",
+        "not_found": "Ez a parancs ({cmdName}) nem létezik.",
+        "help_cmd": "**Leírás:** {description}\n**Használat:** {usage}\n**Példák:** {examples}\n**Alternatív nevek:** {aliases}\n**Kategória:** {category}\n**Újratöltési idő:** {cooldown} másodperc\n**Jogosultságok:** {premUser}\n**Bot jogosultságok:** {premBot}\n**Csak fejlesztőknek:** {dev}\n**Slash parancs:** {slash}\n**Érvek:** {args}\n**Lejátszó:** {player}\n**DJ:** {dj}\n**DJ jogosultságok:** {djPerm}\n**Hang:** {voice}",
+        "footer": "Használd a {prefix}help <command> parancsot több információért"
+    },
+    "botinfo": {
+        "description": "Információk a botról",
+        "content": "Bot információk:\n- **Operációs rendszer**: {osInfo}\n- **Működési idő**: {osUptime}\n- **Gépnév**: {osHostname}\n- **CPU architektúra**: {cpuInfo}\n- **CPU használat**: {cpuUsed}%\n- **Memóriahasználat**: {memUsed}MB / {memTotal}GB\n- **Node verzió**: {nodeVersion}\n- **Discord.js verzió**: {discordJsVersion}\n- **Csatlakozva**: {guilds} szerver, {channels} csatorna és {users} felhasználó\n- **Összes parancs**: {commands}"
+    },
+    "about": {
+        "description": "Információkat mutat a botról",
+        "fields": {
+            "creator": "Készítő",
+            "repository": "Tárhely",
+            "support": "Támogatás",
+            "description": "Nagyon szeretett volna elkészíteni egy első open source projektet a több programozási tapasztalatért. Ebben a projektben kihívás elé állította magát, hogy egy kevesebb hibával rendelkező projektet hozzon létre. Reméljük, élvezed a LavaMusic használatát!"
+        }
+    },
+    "dj": {
+        "description": "DJ mód és a hozzá kapcsolódó szerepkörök kezelése",
+        "errors": {
+            "provide_role": "Kérlek adj meg egy szerepkört.",
+            "no_roles": "Nincs DJ szerepkör.",
+            "invalid_subcommand": "Kérlek adj meg egy érvényes alparancsot."
+        },
+        "messages": {
+            "role_exists": "A(z) <@&{roleId}> DJ szerepkör már hozzá van adva.",
+            "role_added": "A(z) <@&{roleId}> DJ szerepkör hozzáadva.",
+            "role_not_found": "A(z) <@&{roleId}> DJ szerepkör nincs hozzáadva.",
+            "role_removed": "A(z) <@&{roleId}> DJ szerepkör eltávolítva.",
+            "all_roles_cleared": "Minden DJ szerepkör törölve.",
+            "toggle": "DJ mód átváltva: {status}."
+        },
+        "options": {
+            "add": "A hozzáadni kívánt DJ szerepkör",
+            "remove": "Az eltávolítani kívánt DJ szerepkör",
+            "clear": "Törli az összes DJ szerepkört",
+            "toggle": "Átváltja a DJ szerepkört",
+            "role": "DJ szerepkör"
+        },
+        "subcommands": "Alparancsok"
+    },
+    "language": {
+        "description": "Bot nyelvének beállítása.",
+        "invalid_language": "Kérlek adj meg egy érvényes nyelvet. Példa: `en-US` angol (USA)\n\nA támogatott nyelvek listáját itt találod: [itt](https://discord.com/developers/docs/reference#locales)\n\n**Elérhető nyelvek:**\n{languages}",
+        "already_set": "A nyelv már be van állítva: `{language}`",
+        "not_set": "Nyelv nincs beállítva.",
+        "set": "A nyelv beállítva: `{language}`",
+        "reset": "A nyelv visszaállítva az alapértelmezettre.",
+        "options": {
+            "set": "Bot nyelvének beállítása",
+            "language": "A beállítani kívánt nyelv",
+            "reset": "Nyelv visszaállítása az alapértelmezettre"
+        }
+    },
+    "prefix": {
+        "description": "Megmutatja vagy beállítja a bot prefixét",
+        "errors": {
+            "prefix_too_long": "A prefix nem lehet hosszabb 3 karakternél."
+        },
+        "messages": {
+            "current_prefix": "A prefix ezen a szerveren: `{prefix}`",
+            "prefix_set": "A prefix ezen a szerveren mostantól: `{prefix}`",
+            "prefix_reset": "A prefix ezen a szerveren mostantól: `{prefix}`"
+        },
+        "options": {
+            "set": "Beállítja a prefixet",
+            "prefix": "A beállítani kívánt prefix",
+            "reset": "Visszaállítja a prefixet az alapértelmezettre"
+        }
+    },
+    "setup": {
+        "description": "Bot beállítása",
+        "errors": {
+            "channel_exists": "A dal lekérő csatorna már létezik.",
+            "channel_not_exists": "A dal lekérő csatorna nem létezik.",
+            "channel_delete_fail": "A beállító csatorna törölve az adatbázisból. Kérlek töröld manuálisan a szöveges csatornát."
+        },
+        "messages": {
+            "channel_created": "A dal lekérő csatorna létrehozva itt: <#{channelId}>.",
+            "channel_deleted": "A dal lekérő csatorna törölve.",
+            "channel_info": "A dal lekérő csatorna: <#{channelId}>."
+        },
+        "options": {
+            "create": "Létrehozza a dal lekérő csatornát",
+            "delete": "Törli a dal lekérő csatornát",
+            "info": "Megmutatja a dal lekérő csatornát"
+        }
+    },
+    "defaultvolume": {
+        "description": "Beállítja az alapértelmezett hangerőt a bot számára ezen a szerveren",
+        "options": {
+            "volume": "Az alapértelmezett hangerő (0-200)"
+        },
+        "messages": {
+            "current": "Az aktuális alapértelmezett hangerő ezen a szerveren: **{volume}**.",
+            "set": "`✅` | Alapértelmezett hangerő beállítva: **{volume}**.",
+            "invalid_number": "Kérlek adj meg egy érvényes számot.",
+            "too_low": "A hangerő nem lehet kisebb, mint 0.",
+            "too_high": "A hangerő nem lehet nagyobb, mint 200."
+        }
+    },
+    "8d": {
+        "description": "8D szűrő átváltása",
+        "messages": {
+            "filter_enabled": "`✅` | 8D szűrő `BEKAPCSOLVA`.",
+            "filter_disabled": "`✅` | 8D szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "bassboost": {
+        "description": "Bassboost szűrő átváltása",
+        "options": {
+            "level": "Bassboost szintje"
+        },
+        "messages": {
+            "high": "`✅` | Magas bassboost szűrő `BEKAPCSOLVA`.",
+            "low": "`✅` | Alacsony bassboost szűrő `BEKAPCSOLVA`.",
+            "medium": "`✅` | Közepes bassboost szűrő `BEKAPCSOLVA`.",
+            "off": "`✅` | Bassboost szűrő `KIKAPCSOLVA`.",
+            "invalid_level": "Kérlek adj meg egy érvényes bassboost szintet. Elérhető szintek: `high`, `medium`, `low`, `off`."
+        }
+    },
+    "distortion": {
+        "description": "Torzítás szűrő átváltása",
+        "messages": {
+            "filter_enabled": "`✅` | Torzítás szűrő `BEKAPCSOLVA`.",
+            "filter_disabled": "`✅` | Torzítás szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "karaoke": {
+        "description": "Karaoke szűrő átváltása",
+        "messages": {
+            "filter_enabled": "`✅` | Karaoke szűrő `BEKAPCSOLVA`.",
+            "filter_disabled": "`✅` | Karaoke szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "lowpass": {
+        "description": "Lowpass szűrő átváltása",
+        "messages": {
+            "filter_enabled": "`✅` | Lowpass szűrő `BEKAPCSOLVA`.",
+            "filter_disabled": "`✅` | Lowpass szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "nightcore": {
+        "description": "Nightcore szűrő átváltása",
+        "messages": {
+            "filter_enabled": "`✅` | Nightcore szűrő `BEKAPCSOLVA`.",
+            "filter_disabled": "`✅` | Nightcore szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "pitch": {
+        "description": "Hangmagasság szűrő átváltása",
+        "options": {
+            "pitch": "A hangmagasság értéke (0.5 - 5)"
+        },
+        "errors": {
+            "invalid_number": "Kérlek adj meg egy érvényes számot 0.5 és 5 között."
+        },
+        "messages": {
+            "pitch_set": "`✅` | Hangmagasság beállítva: **{pitch}**."
+        }
+    },
+    "rate": {
+        "description": "Dal ütemének módosítása",
+        "options": {
+            "rate": "Az ütem értéke (0.5 - 5)"
+        },
+        "errors": {
+            "invalid_number": "Kérlek adj meg egy érvényes számot 0.5 és 5 között."
+        },
+        "messages": {
+            "rate_set": "`✅` | Ütem beállítva: **{rate}**."
+        }
+    },
+    "reset": {
+        "description": "Minden aktív szűrő visszaállítása",
+        "messages": {
+            "filters_reset": "`✅` | Szűrők visszaállítva."
+        }
+    },
+    "rotation": {
+        "description": "Forgatás szűrő átváltása",
+        "messages": {
+            "enabled": "`✅` | Forgatás szűrő `BEKAPCSOLVA`.",
+            "disabled": "`✅` | Forgatás szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "speed": {
+        "description": "Dal sebességének módosítása",
+        "options": {
+            "speed": "A sebesség értéke (0.5 - 5)"
+        },
+        "messages": {
+            "invalid_number": "Kérlek adj meg egy érvényes számot 0.5 és 5 között.",
+            "set_speed": "`✅` | Sebesség beállítva: **{speed}**."
+        }
+    },
+    "tremolo": {
+        "description": "Tremolo szűrő átváltása",
+        "messages": {
+            "enabled": "`✅` | Tremolo szűrő `BEKAPCSOLVA`.",
+            "disabled": "`✅` | Tremolo szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "vibrato": {
+        "description": "Vibrato szűrő átváltása",
+        "messages": {
+            "enabled": "`✅` | Vibrato szűrő `BEKAPCSOLVA`.",
+            "disabled": "`✅` | Vibrato szűrő `KIKAPCSOLVA`."
+        }
+    },
+    "autoplay": {
+        "description": "Autonóm lejátszás mód átváltása.",
+        "messages": {
+            "enabled": "`✅` | Automatikus lejátszás `BEKAPCSOLVA`.",
+            "disabled": "`✅` | Automatikus lejátszás `KIKAPCSOLVA`."
+        }
+    },
+    "clearqueue": {
+        "description": "Jelenlegi várólista törlése.",
+        "messages": {
+            "cleared": "Várólista törölve."
+        }
+    },
+    "grab": {
+        "description": "Jelenlegi dal elmentése a DM-edbe.",
+        "loading": "Betöltés...",
+        "content": "**Időtartam:** {length}\n**Kérte:** <@{requester}>\n**Link:** [Kattints ide]({uri})",
+        "check_dm": "Kérlek ellenőrizd a DM-edet.",
+        "dm_failed": "Nem tudtam DM-et küldeni neked. Ellenőrizd, hogy a DM-jeid nyitva vannak-e."
+    },
+    "join": {
+        "description": "A bot a hangcsatornádhoz csatlakozik",
+        "already_connected": "Már csatlakozva vagyok ide: <#{channelId}>.",
+        "no_voice_channel": "A parancs használatához hangcsatornában kell lenned.",
+        "joined": "Sikeresen csatlakozva ide: <#{channelId}>."
+    },
+    "leave": {
+        "description": "A bot elhagyja a hangcsatornát",
+        "left": "Sikeresen elhagytam ezt: <#{channelId}>.",
+        "not_in_channel": "Nem vagyok hangcsatornában."
+    },
+    "loop": {
+        "description": "Jelenlegi dal vagy a várólista ismétlése",
+        "options": {
+            "mode": "Ismétlési mód"
+        },
+        "messages": {
+            "looping_song": "**Dal ismétlése.**",
+            "looping_queue": "**Várólista ismétlése.**",
+            "looping_off": "**Ismétlés kikapcsolva.**",
+            "invalid_mode": "Érvénytelen ismétlési mód"
+        }
+    },
+    "lyrics": {
+        "description": "Dalszöveg megjelenítése a jelenlegi számhoz",
+        "lyrics_for_track": "### Dalszöveg: [{trackTitle}]({trackUrl})",
+        "no_lyrics_on_page": "Nem található dalszöveg ezen az oldalon.",
+        "searching": "🔍 Dalszöveg keresése ehhez: **{trackTitle}**...",
+        "session_expired": "A munkamenet lejárt. Használd újra a parancsot a frissítéshez.",
+        "page_indicator": "Oldal: {current} / {total}",
+        "artwork_description": "Borítókép ehhez: {trackTitle}",
+        "no_lyrics_available": "Nem érhető el dalszöveg",
+        "button_subscribe": "📌 Feliratkozás Live Lyrics-re",
+        "button_unsubscribe": "📌 Leiratkozás Live Lyrics-ről",
+        "subscribed": "Feliratkoztál az élő dalszöveg frissítésekre!",
+        "unsubscribed": "Leiratkoztál az élő dalszöveg frissítésekről.",
+        "errors": {
+            "no_results": "Nem található dalszöveg a jelenlegi számhoz.",
+            "lyrics_error": "Hiba történt a dalszöveg lekérése közben.",
+            "no_player_for_lyrics": "Nem lehet dalszöveget lekérni aktív lejátszó nélkül."
+        },
+        "options": {
+            "song": "A dal, aminek a szövegét szeretnéd"
+        }
+    },
+    "nowplaying": {
+        "description": "Megmutatja a jelenleg szóló dalt",
+        "now_playing": "Most szól",
+        "track_info": "[{title}]({uri}) - Kérte: <@{requester}>\n\n`{bar}`"
+    },
+    "pause": {
+        "description": "Szünetelteti a jelenlegi dalt",
+        "successfully_paused": "Dal sikeresen szüneteltetve."
+    },
+    "play": {
+        "description": "Dal lejátszása YouTube-ról, Spotify-ról, URL-ről stb.",
+        "options": {
+            "song": "A dal vagy URL, amit le szeretnél játszani"
+        },
+        "loading": "Betöltés...",
+        "errors": {
+            "search_error": "Hiba történt a keresés közben.",
+            "no_results": "Nincs találat.",
+            "queue_too_long": "A várólista túl hosszú. A maximális hossz {maxQueueSize} dal.",
+            "playlist_too_long": "A lejátszási lista túl hosszú. A maximális hossz {maxPlaylistSize} dal."
+        },
+        "added_to_queue": "[{title}]({uri}) hozzáadva a várólistához.",
+        "added_playlist_to_queue": "{length} dal hozzáadva a várólistához."
+    },
+    "playlocal": {
+        "description": "Helyi audio fájl lejátszása",
+        "options": {
+            "file": "A lejátszani kívánt audio fájl"
+        },
+        "loading": "Betöltés...",
+        "errors": {
+            "empty_query": "Kérlek csatolj egy audio fájlt a lejátszáshoz.",
+            "invalid_format": "Csak MP3, WAV, OGG, FLAC, AAC vagy M4A fájlokat játszhatsz le.",
+            "no_results": "Sikertelen az audio fájl lejátszása. Lehet, hogy sérült."
+        },
+        "added_to_queue": "[{title}]({url}) hozzáadva a várólistához"
+    },
+    "playnext": {
+        "description": "Dal hozzáadása a várólista elejére",
+        "options": {
+            "song": "A lejátszani kívánt dal"
+        },
+        "loading": "Betöltés...",
+        "errors": {
+            "search_error": "Hiba történt a keresés közben.",
+            "no_results": "Nincs találat.",
+            "queue_too_long": "A várólista túl hosszú. A maximális hossz {maxQueueSize} dal.",
+            "playlist_too_long": "A lejátszási lista túl hosszú. A maximális hossz {maxPlaylistSize} dal."
+        },
+        "added_to_play_next": "[{title}]({uri}) hozzáadva, mint következő dal.",
+        "added_playlist_to_play_next": "{length} dal hozzáadva, mint következő dalok."
+    },
+    "queue": {
+        "description": "Megmutatja a jelenlegi várólistát.",
+        "now_playing": "Most szól: [{title}]({uri}) - Kérte: <@{requester}> - Időtartam: `{duration}`",
+        "live": "ÉLŐ",
+        "track_info": "{index}. [{title}]({uri}) - Kérte: <@{requester}> - Időtartam: `{duration}`",
+        "title": "Várólista",
+        "page_info": "Oldal: {index} / {total}",
+        "duration": "Várólista hossza: `{totalDuration}`"
+    },
+    "remove": {
+        "description": "Eltávolít egy adott dalt a várólistából",
+        "options": {
+            "song": "A dal száma a várólistában"
+        },
+        "errors": {
+            "no_songs": "Nincsenek dalok a várólistában.",
+            "invalid_number": "Kérlek adj meg egy érvényes sorszámot."
+        },
+        "messages": {
+            "removed": "{songNumber}. dal eltávolítva a várólistából."
+        }
+    },
+    "replay": {
+        "description": "Újra játssza a jelenlegi számot",
+        "errors": {
+            "not_seekable": "Nem lehet újra játszani ezt a számot, mert nem tekerhető."
+        },
+        "messages": {
+            "replaying": "Jelenlegi szám újra játszása."
+        }
+    },
+    "resume": {
+        "description": "Folytatja a szüneteltetett dalt",
+        "errors": {
+            "not_paused": "A lejátszó nincs szüneteltetve."
+        },
+        "messages": {
+            "resumed": "Lejátszás folytatva."
+        }
+    },
+    "search": {
+        "description": "Dal keresése",
+        "options": {
+            "song": "A keresett dal"
+        },
+        "select": "Válassz egy dalt a listából...",
+        "errors": {
+            "no_results": "Nincs találat.",
+            "no_results_title": "Nincs találat!",
+            "no_results_description": "Nem találtam a keresésnek megfelelő dalt. Próbálj meg más kulcsszavakat vagy adj meg egy linket.",
+            "invalid_selection_title": "Érvénytelen választás!",
+            "invalid_selection_description": "A választott opció érvénytelen. Kérlek válassz egy számot a listából.",
+            "search_error": "Hiba történt a dal keresése közben.",
+            "vc_connect_fail_title": "Hiba a hangcsatornához való csatlakozáskor",
+            "vc_connect_fail_description": "Nem tudtam csatlakozni a hangcsatornádhoz. Ellenőrizd, hogy megvannak-e a szükséges jogosultságaim."
+        },
+        "messages": {
+            "results_found": "**{count}** találat.",
+            "select_prompt": "Válassz egy számot a dal várólistához adásához.",
+            "page_info": "Oldal: {currentPage} / {maxPages}",
+            "added_to_queue": "**[{title}]({uri})** hozzáadva a várólistához!",
+            "selection_timed_out_title": "Időtúllépés!",
+            "selection_timed_out_description": "Nem érkezett válasz időben. A keresés megszakítva. Próbáld újra.",
+            "selection_timed_out_short": "Választási idő lejárt."
+        }
+    },
+    "seek": {
+        "description": "Egy adott időponthoz ugrik a dalban",
+        "options": {
+            "duration": "A kívánt időpont (pl. 1m 30s)"
+        },
+        "errors": {
+            "invalid_format": "Érvénytelen időformátum. Példák: seek 1m, seek 1h 30m",
+            "not_seekable": "Ez a szám nem tekerhető.",
+            "beyond_duration": "Nem tekerhetsz túl a dal hosszán ({length})."
+        },
+        "messages": {
+            "seeked_to": "Ugrás ide: {duration}"
+        }
+    },
+    "shuffle": {
+        "description": "Megkeveri a várólistát",
+        "messages": {
+            "shuffled": "Várólista megkeverve."
+        },
+        "errors": {
+            "fairplay": "A Fairplay mód be van kapcsolva. Nem keverheted meg a várólistát."
+        }
+    },
+    "skip": {
+        "description": "Átugorja a jelenlegi dalt",
+        "messages": {
+            "skipped": "Átugorva: [{title}]({uri})."
+        }
+    },
+    "skipto": {
+        "description": "Egy adott dalra ugrik a várólistában",
+        "options": {
+            "number": "A dal sorszáma"
+        },
+        "errors": {
+            "invalid_number": "Kérlek adj meg egy érvényes számot."
+        },
+        "messages": {
+            "skipped_to": "Ugrás a(z) {number}. dalra."
+        }
+    },
+    "move": {
+        "description": "Dal helyének módosítása a várólistában",
+        "options": {
+            "from": "A dal jelenlegi helye",
+            "to": "A dal új helye"
+        },
+        "errors": {
+            "no_tracks": "Nincsenek dalok a várólistában.",
+            "invalid_usage": "Érvénytelen használat. Kérlek add meg a forrás és cél pozíciókat.",
+            "invalid_numbers": "Kérlek adj meg érvényes sorszámokat.",
+            "invalid_positions": "Kérlek adj meg érvényes sorszámokat a várólistán belül.",
+            "same_position": "A forrás és cél pozíció megegyezik."
+        },
+        "messages": {
+            "moved": "**{title}** áthelyezve innen: {from}, ide: {to}."
+        }
+    },
+    "stop": {
+        "description": "Megállítja a zenét és törli a várólistát",
+        "messages": {
+            "stopped": "Zene megállítva és várólista törölve."
+        }
+    },
+    "volume": {
+        "description": "Beállítja a lejátszó hangerejét",
+        "options": {
+            "number": "Hangerő (0-200)"
+        },
+        "messages": {
+            "invalid_number": "Kérlek adj meg egy érvényes számot.",
+            "too_low": "A hangerő nem lehet kisebb, mint 0.",
+            "too_high": "A hangerő nem lehet nagyobb, mint 200. Meg akarsz süketülni, vagy tönkretenni a hangszórókat? Hmmm, nem hiszem, hogy ez jó ötlet.",
+            "set": "Hangerő beállítva: {volume}"
+        }
+    },
+    "addsong": {
+        "description": "Dal hozzáadása egy elmentett lejátszási listához",
+        "options": {
+            "playlist": "A lejátszási lista neve",
+            "song": "A hozzáadni kívánt dal"
+        },
+        "messages": {
+            "no_playlist": "Kérlek adj meg egy lejátszási listát",
+            "no_song": "Kérlek adj meg egy dalt",
+            "playlist_not_found": "Ez a lejátszási lista nem létezik",
+            "no_songs_found": "Nem található dal",
+            "added": "{count} dal hozzáadva ide: {playlist}"
+        }
+    },
+    "create": {
+        "description": "Új lejátszási lista létrehozása.",
+        "options": {
+            "name": "Lejátszási lista neve"
+        },
+        "messages": {
+            "name_too_long": "A lejátszási lista neve maximum 50 karakter lehet.",
+            "playlist_exists": "Ilyen nevű lejátszási lista már létezik. Kérlek válassz másikat.",
+            "playlist_created": "Lejátszási lista (**{name}**) létrehozva.",
+            "name_empty": "Meg kell adnod egy nevet a lejátszási listának."
+        }
+    },
+    "delete": {
+        "description": "Lejátszási lista törlése",
+        "options": {
+            "playlist": "A törölni kívánt lejátszási lista"
+        },
+        "messages": {
+            "playlist_not_found": "Ez a lejátszási lista nem létezik.",
+            "playlist_deleted": "Lejátszási lista (**{playlistName}**) törölve."
+        }
+    },
+    "list": {
+        "description": "Kilistázza a felhasználó lejátszási listáit",
+        "options": {
+            "user": "A felhasználó, akinek a listáit le szeretnéd kérni"
+        },
+        "messages": {
+            "no_playlists": "Ennek a felhasználónak nincsenek lejátszási listái.",
+            "your": "A te",
+            "playlists_title": "{username} lejátszási listái",
+            "error": "Hiba történt a lejátszási listák lekérése közben.",
+            "invalid_username": "Érvénytelen felhasználónév vagy a felhasználó nem található.",
+            "invalid_userid": "Érvénytelen felhasználói ID."
+        }
+    },
+    "load": {
+        "description": "Elmentett lejátszási lista betöltése a várólistába.",
+        "options": {
+            "playlist": "A betölteni kívánt lejátszási lista"
+        },
+        "messages": {
+            "playlist_not_exist": "Ez a lejátszási lista nem létezik.",
+            "playlist_empty": "Ez a lejátszási lista üres.",
+            "playlist_loaded": "`{name}` betöltve `{count}` dallal.",
+            "no_lavalink_nodes": "Nincs elérhető Lavalink csomópont a lejátszási lista betöltéséhez."
+        }
+    },
+    "removesong": {
+        "description": "Dal eltávolítása egy lejátszási listából",
+        "options": {
+            "playlist": "A lejátszási lista neve",
+            "song": "Az eltávolítani kívánt dal"
+        },
+        "messages": {
+            "provide_playlist": "Kérlek adj meg egy lejátszási listát.",
+            "provide_song": "Kérlek adj meg egy dalt.",
+            "playlist_not_exist": "Ez a lejátszási lista nem létezik.",
+            "song_not_found": "Nem található megfelelő dal.",
+            "song_removed": "{song} eltávolítva innen: {playlist}.",
+            "error_occurred": "Hiba történt a dal eltávolítása közben."
+        }
+    },
+    "steal": {
+        "description": "Lejátszási lista ellopása egy másik felhasználótól és hozzáadása a sajátjaidhoz",
+        "options": {
+            "playlist": "Az ellopni kívánt lista neve",
+            "user": "A felhasználó, akitől el szeretnéd lopni"
+        },
+        "messages": {
+            "provide_playlist": "Kérlek adj meg egy lejátszási lista nevet.",
+            "provide_user": "Kérlek említs meg egy felhasználót.",
+            "playlist_not_exist": "Ez a lejátszási lista nem létezik a megadott felhasználónál.",
+            "playlist_exists": "Már van egy `{playlist}` nevű lejátszási listád.",
+            "playlist_stolen": "Lejátszási lista (`{playlist}`) sikeresen ellopva tőle: {user}.",
+            "error_occurred": "Hiba történt a lejátszási lista ellopása közben."
+        }
+    },
+    "movenode": {
+        "description": "Zenelejátszók áthelyezése egy másik Lavalink csomópontra",
+        "options": {
+            "node": "A cél csomópont ID-ja"
+        },
+        "messages": {
+            "no_player": "Nincs aktív zenelejátszó ezen a szerveren.",
+            "no_available_nodes": "Nincs elérhető csomópont az áthelyezéshez.",
+            "available_nodes_title": "Elérhető csomópontok",
+            "current_node": "Jelenlegi csomópont",
+            "available_nodes": "Elérhető csomópontok",
+            "usage_hint": "Használat: movenode <nodeId>",
+            "node_not_found": "A(z) `{node}` csomópont nem található.",
+            "node_not_connected": "A(z) `{node}` csomópont nem csatlakozik.",
+            "same_node": "A zenelejátszó már a(z) `{node}` csomóponton van.",
+            "moving": "Zenelejátszó áthelyezése innen: `{from}`, ide: `{to}`...",
+            "success_title": "Zenelejátszó sikeresen áthelyezve",
+            "success_description": "A zenelejátszó áthelyezve innen: `{from}`, ide: `{to}`.",
+            "error": "Sikertelen áthelyezés: {error}",
+            "moving_all_players": "Minden zenelejátszó áthelyezése a(z) `{node}` csomópontra...",
+            "results_title": "MoveNode Eredmények",
+            "moved_players": "**Áthelyezett zenelejátszók a szervereken:**\n{list}",
+            "guild_move": "• `{guildId}` ({from} → {to})",
+            "failed_moves": "**Sikertelen áthelyezések a szervereken:**\n{list}",
+            "guild_move_failed": "• `{guildId}`: {error}",
+            "no_players_moved": "Nem volt szükség zenelejátszók áthelyezésére.",
+            "unknown_error": "Ismeretlen hiba",
+            "no_players": "Nincsenek áthelyezhető zenelejátszók."
+        }
+    }
+}
