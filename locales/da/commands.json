@@ -1,0 +1,639 @@
+{
+    "247": {
+        "description": "Indstil botten til at blive i stemmekanalen",
+        "errors": {
+            "not_in_voice": "Du skal være i en stemmekanal for at bruge denne kommando.",
+            "generic": "Der opstod en fejl under forsøget på at udføre denne kommando."
+        },
+        "messages": {
+            "disabled": "`✅` | 24/7-tilstand er blevet `DEAKTIVERET`.",
+            "enabled": "`✅` | 24/7-tilstand er blevet `AKTIVERET`."
+        }
+    },
+    "fairplay": {
+        "description": "Indstil botten til at afspille musik retfærdigt blandt brugere.",
+        "errors": {
+            "not_in_voice": "Du skal være i en stemmekanal for at bruge denne kommando.",
+            "generic": "Der opstod en fejl under forsøget på at udføre denne kommando."
+        },
+        "messages": {
+            "disabled": "`✅` | Fairplay-tilstand er blevet `DEAKTIVERET`.",
+            "enabled": "`✅` | Fairplay-tilstand er blevet `AKTIVERET`."
+        }
+    },
+    "ping": {
+        "description": "Viser bottens latenstid.",
+        "content": "Pinger...",
+        "bot_latency": "Bot latenstid",
+        "api_latency": "API latenstid",
+        "requested_by": "Anmodet af {author}"
+    },
+    "lavalink": {
+        "description": "Viser de aktuelle Lavalink node statistikker.",
+        "title": "Lavalink Stats",
+        "content": "Afspiller: {players}\nAktive afspillere: {playingPlayers}\nOppetid: {uptime}\nKerner: {cores} Kerne(r)\nHukommelsesforbrug: {used} / {reservable}\nSystembelastning: {systemLoad}%\nLavalink belastning: {lavalinkLoad}%",
+        "page_info": "Side {index} af {total}"
+    },
+    "invite": {
+        "description": "Få bottens invitationslink.",
+        "content": "Du kan invitere mig ved at klikke på knappen nedenfor. Eventuelle fejl eller udfald? Tilslut dig supportserveren!"
+    },
+    "help": {
+        "description": "Viser help-menuen.",
+        "options": {
+            "command": "Den kommando du ønsker info om"
+        },
+        "content": "Hej med dig! Jeg er `{bot}`, en musik-bot lavet med [`Lavamusic`](https://github.com/appujet/lavamusic) og `Discord.js`.\nDu kan bruge `{prefix}help <kommando>` for at få mere info om en kommando.",
+        "title": "Help Menu",
+        "not_found": "Denne `{cmdName}` kommando eksisterer ikke.",
+        "help_cmd": "**Beskrivelse:** {description}\n**Brug:** {usage}\n**Eksempler:** {examples}\n**Aliaser:** {aliases}\n**Kategori:** {category}\n**Cooldown:** {cooldown} sekunder\n**Tilladelser:** {premUser}\n**Bot tilladelser:** {premBot}\n**Kun for udviklere:** {dev}\n**Slash kommando:** {slash}\n**Argumenter:** {args}\n**Afspiller:** {player}\n**DJ:** {dj}\n**DJ tilladelser:** {djPerm}\n**Stemme:** {voice}",
+        "footer": "Brug {prefix}help <kommando> for mere info om en kommando"
+    },
+    "botinfo": {
+        "description": "Information om botten",
+        "content": "Bot information:\n- **Operativsystem**: {osInfo}\n- **Oppetid**: {osUptime}\n- **Værtsnavn**: {osHostname}\n- **CPU Arkitektur**: {cpuInfo}\n- **CPU Forbrug**: {cpuUsed}%\n- **Hukommelsesforbrug**: {memUsed}MB / {memTotal}GB\n- **Node Version**: {nodeVersion}\n- **Discord.js Version**: {discordJsVersion}\n- **Forbundet til** {guilds} guilds, {channels} kanaler, og {users} brugere\n- **Total kommandoer**: {commands}"
+    },
+    "about": {
+        "description": "Viser information om botten",
+        "fields": {
+            "creator": "Skaber",
+            "repository": "Repository",
+            "support": "Support",
+            "description": "Han ønskede virkelig at lave sit første open source-projekt nogensinde for at få mere kodeerfaring. I dette projekt blev han udfordret til at lave et projekt med færre fejl. Håber du nyder at bruge LavaMusic!"
+        }
+    },
+    "dj": {
+        "description": "Administrer DJ-tilstand og tilknyttede roller",
+        "errors": {
+            "provide_role": "Angiv venligst en rolle.",
+            "no_roles": "DJ-rollen er tom.",
+            "invalid_subcommand": "Angiv venligst en gyldig underkommando."
+        },
+        "messages": {
+            "role_exists": "DJ-rollen <@&{roleId}> er allerede tilføjet.",
+            "role_added": "DJ-rollen <@&{roleId}> er blevet tilføjet.",
+            "role_not_found": "DJ-rollen <@&{roleId}> er ikke tilføjet.",
+            "role_removed": "DJ-rollen <@&{roleId}> er blevet fjernet.",
+            "all_roles_cleared": "Alle DJ-roller er blevet fjernet.",
+            "toggle": "DJ-tilstand er blevet sat til {status}."
+        },
+        "options": {
+            "add": "Den DJ-rolle du vil tilføje",
+            "remove": "Den DJ-rolle du vil fjerne",
+            "clear": "Rydder alle DJ-roller",
+            "toggle": "Skifter DJ-rollen",
+            "role": "DJ-rollen"
+        },
+        "subcommands": "Underkommandoer"
+    },
+    "language": {
+        "description": "Konfigurer bottens sprog.",
+        "invalid_language": "Angiv venligst et gyldigt sprog. Eksempel: `en-US` for engelsk (USA)\n\nDu kan finde listen over understøttede sprog [her](https://discord.com/developers/docs/reference#locales)\n\n**Tilgængelige sprog:**\n{languages}",
+        "already_set": "Sproget er allerede indstillet til `{language}`",
+        "not_set": "Sproget er ikke indstillet.",
+        "set": "Sproget er blevet indstillet til `{language}`",
+        "reset": "Sproget er blevet nulstillet til standardsproget.",
+        "options": {
+            "set": "Indstil sproget for botten",
+            "language": "Det sprog du ønsker at indstille",
+            "reset": "Skift sproget tilbage til standardsproget"
+        }
+    },
+    "prefix": {
+        "description": "Viser eller indstiller bottens præfiks",
+        "errors": {
+            "prefix_too_long": "Præfikset kan ikke være længere end 3 tegn."
+        },
+        "messages": {
+            "current_prefix": "Præfikset for denne server er `{prefix}`",
+            "prefix_set": "Præfikset for denne server er nu `{prefix}`",
+            "prefix_reset": "Præfikset for denne server er nu `{prefix}`"
+        },
+        "options": {
+            "set": "Indstiller præfikset",
+            "prefix": "Det præfiks du ønsker at indstille",
+            "reset": "Nulstiller præfikset til standard"
+        }
+    },
+    "setup": {
+        "description": "Opsætter botten",
+        "errors": {
+            "channel_exists": "Sangønske-kanalen eksisterer allerede.",
+            "channel_not_exists": "Sangønske-kanalen eksisterer ikke.",
+            "channel_delete_fail": "Opsætningskanalen er blevet slettet fra databasen. Slet venligst tekstkanalen manuelt."
+        },
+        "messages": {
+            "channel_created": "Sangønske-kanalen er blevet oprettet i <#{channelId}>.",
+            "channel_deleted": "Sangønske-kanalen er blevet slettet.",
+            "channel_info": "Sangønske-kanalen er <#{channelId}>."
+        },
+        "options": {
+            "create": "Opretter sangønske-kanalen",
+            "delete": "Sletter sangønske-kanalen",
+            "info": "Viser sangønske-kanalen"
+        }
+    },
+    "defaultvolume": {
+        "description": "Indstiller standardlydstyrken for botten på denne server",
+        "options": {
+            "volume": "Den standardlydstyrke du ønsker at indstille (0-200)"
+        },
+        "messages": {
+            "current": "Den nuværende standardlydstyrke på denne server er **{volume}**.",
+            "set": "`✅` | Standardlydstyrken er blevet indstillet til **{volume}**.",
+            "invalid_number": "Angiv venligst et gyldigt tal.",
+            "too_low": "Lydstyrken kan ikke være lavere end 0.",
+            "too_high": "Lydstyrken kan ikke være højere end 200."
+        }
+    },
+    "8d": {
+        "description": "Skift 8D-filteret",
+        "messages": {
+            "filter_enabled": "`✅` | 8D-filter er blevet `AKTIVERET`.",
+            "filter_disabled": "`✅` | 8D-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "bassboost": {
+        "description": "Skift bassboost-filteret",
+        "options": {
+            "level": "Det bassboost-niveau du ønsker at indstille"
+        },
+        "messages": {
+            "high": "`✅` | Højt bassboost-filter er blevet `AKTIVERET`.",
+            "low": "`✅` | Lavt bassboost-filter er blevet `AKTIVERET`.",
+            "medium": "`✅` | Medium bassboost-filter er blevet `AKTIVERET`.",
+            "off": "`✅` | Bassboost-filter er blevet `DEAKTIVERET`.",
+            "invalid_level": "Angiv venligst et gyldigt bassboost-niveau. Tilgængelige niveauer: `high`, `medium`, `low`, `off`."
+        }
+    },
+    "distortion": {
+        "description": "Skift distortion-filteret",
+        "messages": {
+            "filter_enabled": "`✅` | Distortion-filter er blevet `AKTIVERET`.",
+            "filter_disabled": "`✅` | Distortion-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "karaoke": {
+        "description": "Skift karaoke-filteret",
+        "messages": {
+            "filter_enabled": "`✅` | Karaoke-filter er blevet `AKTIVERET`.",
+            "filter_disabled": "`✅` | Karaoke-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "lowpass": {
+        "description": "Skift lowpass-filteret",
+        "messages": {
+            "filter_enabled": "`✅` | Lowpass-filter er blevet `AKTIVERET`.",
+            "filter_disabled": "`✅` | Lowpass-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "nightcore": {
+        "description": "Skift nightcore-filteret",
+        "messages": {
+            "filter_enabled": "`✅` | Nightcore-filter er blevet `AKTIVERET`.",
+            "filter_disabled": "`✅` | Nightcore-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "pitch": {
+        "description": "Skift pitch-filteret",
+        "options": {
+            "pitch": "Værdien for at indstille pitch (0.5 - 5)"
+        },
+        "errors": {
+            "invalid_number": "Angiv venligst et gyldigt tal mellem 0.5 og 5."
+        },
+        "messages": {
+            "pitch_set": "`✅` | Pitch er blevet indstillet til **{pitch}**."
+        }
+    },
+    "rate": {
+        "description": "Skift hastigheden på sangen",
+        "options": {
+            "rate": "Værdien for at indstille rate (0.5 - 5)"
+        },
+        "errors": {
+            "invalid_number": "Angiv venligst et gyldigt tal mellem 0.5 og 5."
+        },
+        "messages": {
+            "rate_set": "`✅` | Rate er blevet indstillet til **{rate}**."
+        }
+    },
+    "reset": {
+        "description": "Nulstiller alle aktive filtre",
+        "messages": {
+            "filters_reset": "`✅` | Filtre er blevet nulstillet."
+        }
+    },
+    "rotation": {
+        "description": "Skift rotation-filteret",
+        "messages": {
+            "enabled": "`✅` | Rotation-filter er blevet `AKTIVERET`.",
+            "disabled": "`✅` | Rotation-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "speed": {
+        "description": "Skift hastigheden på sangen",
+        "options": {
+            "speed": "Hastigheden du ønsker at indstille (0.5 - 5)"
+        },
+        "messages": {
+            "invalid_number": "Angiv venligst et gyldigt tal mellem 0.5 og 5.",
+            "set_speed": "`✅` | Hastighed er blevet indstillet til **{speed}**."
+        }
+    },
+    "tremolo": {
+        "description": "Skift tremolo-filteret",
+        "messages": {
+            "enabled": "`✅` | Tremolo-filter er blevet `AKTIVERET`.",
+            "disabled": "`✅` | Tremolo-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "vibrato": {
+        "description": "Skift vibrato-filteret",
+        "messages": {
+            "enabled": "`✅` | Vibrato-filter er blevet `AKTIVERET`.",
+            "disabled": "`✅` | Vibrato-filter er blevet `DEAKTIVERET`."
+        }
+    },
+    "autoplay": {
+        "description": "Skifter autoplay-tilstand.",
+        "messages": {
+            "enabled": "`✅` | Autoplay er blevet `AKTIVERET`.",
+            "disabled": "`✅` | Autoplay er blevet `DEAKTIVERET`."
+        }
+    },
+    "clearqueue": {
+        "description": "Ryd den aktuelle kø.",
+        "messages": {
+            "cleared": "Køen er blevet ryddet."
+        }
+    },
+    "grab": {
+        "description": "Gem den aktuelle sang til din DM.",
+        "loading": "Indlæser...",
+        "content": "**Varighed:** {length}\n**Anmodet af:** <@{requester}>\n**Link:** [Klik her]({uri})",
+        "check_dm": "Tjek venligst din DM.",
+        "dm_failed": "Jeg kunne ikke sende dig en DM. Sørg for at dine DM'er er åbne."
+    },
+    "join": {
+        "description": "Forbinder botten til din stemmekanal",
+        "already_connected": "Jeg er allerede forbundet til <#{channelId}>.",
+        "no_voice_channel": "Du skal være i en stemmekanal for at bruge denne kommando.",
+        "joined": "Forbundet til <#{channelId}> med succes."
+    },
+    "leave": {
+        "description": "Afkobler botten fra stemmekanalen",
+        "left": "Forlod <#{channelId}> med succes.",
+        "not_in_channel": "Jeg er ikke i en stemmekanal."
+    },
+    "loop": {
+        "description": "Loop den aktuelle sang eller køen",
+        "options": {
+            "mode": "Den loop-tilstand du ønsker at indstille"
+        },
+        "messages": {
+            "looping_song": "**Looper sangen.**",
+            "looping_queue": "**Looper køen.**",
+            "looping_off": "**Looping er nu deaktiveret.**",
+            "invalid_mode": "Ugyldig loop-tilstand"
+        }
+    },
+    "lyrics": {
+        "description": "Vis sangtekster for det aktuelle nummer",
+        "lyrics_for_track": "### Sangtekster for: [{trackTitle}]({trackUrl})",
+        "no_lyrics_on_page": "Ingen sangtekster fundet på denne side.",
+        "searching": "🔍 Søger efter sangtekster til **{trackTitle}**...",
+        "session_expired": "Sessionen er udløbet. Brug kommandoen igen for at opdatere.",
+        "page_indicator": "Side {current}/{total}",
+        "artwork_description": "Coverbillede til {trackTitle}",
+        "no_lyrics_available": "Ingen sangtekster tilgængelige",
+        "button_subscribe": "📌 Abonner på Live Lyrics",
+        "button_unsubscribe": "📌 Afmeld Live Lyrics",
+        "subscribed": "Du har abonneret på live sangtekst-opdateringer!",
+        "unsubscribed": "Du har afmeldt live sangtekst-opdateringer.",
+        "errors": {
+            "no_results": "Ingen sangtekster fundet for det aktuelle nummer.",
+            "lyrics_error": "Der opstod en fejl under hentning af sangteksterne.",
+            "no_player_for_lyrics": "Kan ikke hente sangtekster til denne sang uden en aktiv afspiller."
+        },
+        "options": {
+            "song": "Den sang du ønsker at hente sangtekster til"
+        }
+    },
+    "nowplaying": {
+        "description": "Viser den sang der afspilles nu",
+        "now_playing": "Afspiller nu",
+        "track_info": "[{title}]({uri}) - Anmodet af: <@{requester}>\n\n`{bar}`"
+    },
+    "pause": {
+        "description": "Pauser den aktuelle sang",
+        "successfully_paused": "Sangen er sat på pause."
+    },
+    "play": {
+        "description": "Afspiller en sang fra YouTube, Spotify, URL, osv.",
+        "options": {
+            "song": "Sangen eller URL'en du ønsker at afspille"
+        },
+        "loading": "Indlæser...",
+        "errors": {
+            "search_error": "Der opstod en fejl under søgningen.",
+            "no_results": "Der blev ikke fundet nogen resultater.",
+            "queue_too_long": "Køen er for lang. Den maksimale længde er {maxQueueSize} sange.",
+            "playlist_too_long": "Playlisten er for lang. Den maksimale længde is {maxPlaylistSize} sange."
+        },
+        "added_to_queue": "Tilføjede [{title}]({uri}) til køen.",
+        "added_playlist_to_queue": "Tilføjede {length} sange til køen."
+    },
+    "playlocal": {
+        "description": "Afspiller en lokal lydfil",
+        "options": {
+            "file": "Lydfilen du ønsker at afspille"
+        },
+        "loading": "Indlæser...",
+        "errors": {
+            "empty_query": "Vedhæft venligst en lydfil for at afspille.",
+            "invalid_format": "Du kan kun afspille MP3, WAV, OGG, FLAC, AAC eller M4A filer.",
+            "no_results": "Kunne ikke afspille lydfilen. Den kan være beskadiget."
+        },
+        "added_to_queue": "Tilføjede [{title}]({url}) til køen"
+    },
+    "playnext": {
+        "description": "Tilføjer en sang til toppen af køen",
+        "options": {
+            "song": "Den sang du ønsker at afspille"
+        },
+        "loading": "Indlæser...",
+        "errors": {
+            "search_error": "Der opstod en fejl under søgningen.",
+            "no_results": "Der blev ikke fundet nogen resultater.",
+            "queue_too_long": "Køen er for lang. Den maksimale længde er {maxQueueSize} sange.",
+            "playlist_too_long": "Playlisten er for lang. Den maksimale længde er {maxPlaylistSize} sange."
+        },
+        "added_to_play_next": "Tilføjede [{title}]({uri}) til at afspille som næste i køen.",
+        "added_playlist_to_play_next": "Tilføjede {length} sange til at afspille som næste i køen."
+    },
+    "queue": {
+        "description": "Viser den aktuelle sangkø.",
+        "now_playing": "Afspiller nu: [{title}]({uri}) - Anmodet af: <@{requester}> - Varighed: `{duration}`",
+        "live": "LIVE",
+        "track_info": "{index}. [{title}]({uri}) - Anmodet af: <@{requester}> - Varighed: `{duration}`",
+        "title": "Kø",
+        "page_info": "Side {index} af {total}",
+        "duration": "Køvarighed: `{totalDuration}`"
+    },
+    "remove": {
+        "description": "Fjerner en specifik sang fra køen",
+        "options": {
+            "song": "Sangnummeret du ønsker at fjerne"
+        },
+        "errors": {
+            "no_songs": "Der er ingen sange i køen.",
+            "invalid_number": "Angiv venligst et gyldigt sangnummer."
+        },
+        "messages": {
+            "removed": "Fjernede sang nummer {songNumber} fra køen."
+        }
+    },
+    "replay": {
+        "description": "Genafspiller det aktuelle nummer",
+        "errors": {
+            "not_seekable": "Kan ikke genafspille dette nummer, da det ikke er søgbart."
+        },
+        "messages": {
+            "replaying": "Genafspiller det aktuelle nummer."
+        }
+    },
+    "resume": {
+        "description": "Genoptager den pausede sang",
+        "errors": {
+            "not_paused": "Afspilleren er ikke på pause."
+        },
+        "messages": {
+            "resumed": "Genoptog afspilleren."
+        }
+    },
+    "search": {
+        "description": "Søg efter en sang",
+        "options": {
+            "song": "Den sang du leder efter"
+        },
+        "select": "Vælg en sang fra listen...",
+        "errors": {
+            "no_results": "Ingen resultater fundet.",
+            "no_results_title": "Ingen søgeresultater fundet!",
+            "no_results_description": "Jeg kunne ikke finde nogen sange, der matcher din søgning. Prøv at ændre søgeord eller angiv et link.",
+            "invalid_selection_title": "Ugyldigt valg!",
+            "invalid_selection_description": "Den valgte mulighed er ugyldig. Vælg venligst et sangnummer fra listen.",
+            "search_error": "Der opstod en fejl under søgning efter sangen.",
+            "vc_connect_fail_title": "Fejl ved forbindelse til stemmekanal",
+            "vc_connect_fail_description": "Jeg kunne ikke forbinde til din stemmekanal. Sørg for at jeg har de rette tilladelser."
+        },
+        "messages": {
+            "results_found": "Fandt **{count}** sange.",
+            "select_prompt": "Vælg et nummer for at tilføje sangen til køen.",
+            "page_info": "Side {currentPage}/{maxPages}",
+            "added_to_queue": "Tilføjede **[{title}]({uri})** til køen!",
+            "selection_timed_out_title": "Tiden udløbet!",
+            "selection_timed_out_description": "Ingen sang blev valgt inden for den givne tid. Søgningen er blevet annulleret. Prøv venligst igen.",
+            "selection_timed_out_short": "Valg tidsafbrudt."
+        }
+    },
+    "seek": {
+        "description": "Søger til et specifikt tidspunkt i sangen",
+        "options": {
+            "duration": "Varigheden der skal søges til (f.eks. 1m 30s)"
+        },
+        "errors": {
+            "invalid_format": "Ugyldigt tidsformat. Eksempler: seek 1m, seek 1h 30m",
+            "not_seekable": "Dette nummer er ikke søgbart.",
+            "beyond_duration": "Kan ikke søge længere end sangens varighed på {length}."
+        },
+        "messages": {
+            "seeked_to": "Søgte til {duration}"
+        }
+    },
+    "shuffle": {
+        "description": "Blander køen",
+        "messages": {
+            "shuffled": "Blandede køen."
+        },
+        "errors": {
+            "fairplay": "Fairplay-tilstand er aktiveret. Du kan ikke blande køen."
+        }
+    },
+    "skip": {
+        "description": "Springer den aktuelle sang over",
+        "messages": {
+            "skipped": "Sprang over [{title}]({uri})."
+        }
+    },
+    "skipto": {
+        "description": "Springer til en specifik sang i køen",
+        "options": {
+            "number": "Nummeret på den sang du ønsker at springe til"
+        },
+        "errors": {
+            "invalid_number": "Angiv venligst et gyldigt tal."
+        },
+        "messages": {
+            "skipped_to": "Sprang til sang nummer {number}."
+        }
+    },
+    "move": {
+        "description": "Flyt et nummers position i køen",
+        "options": {
+            "from": "Positionen for det nummer der skal flyttes",
+            "to": "Positionen nummeret skal flyttes til"
+        },
+        "errors": {
+            "no_tracks": "Der er ingen numre i køen.",
+            "invalid_usage": "Ugyldig brug. Angiv venligst fra og til positioner.",
+            "invalid_numbers": "Angiv venligst gyldige nummerpositioner.",
+            "invalid_positions": "Angiv venligst gyldige nummerpositioner inden for køen.",
+            "same_position": "Fra og til positionerne er de samme."
+        },
+        "messages": {
+            "moved": "Flyttede **{title}** fra position {from} til {to}."
+        }
+    },
+    "stop": {
+        "description": "Stopper musikken og rydder køen",
+        "messages": {
+            "stopped": "Stoppede musikken og ryddede køen."
+        }
+    },
+    "volume": {
+        "description": "Indstiller afspillerens lydstyrke",
+        "options": {
+            "number": "Den lydstyrke du ønsker at indstille (0-200)"
+        },
+        "messages": {
+            "invalid_number": "Angiv venligst et gyldigt tal.",
+            "too_low": "Lydstyrken kan ikke være lavere end 0.",
+            "too_high": "Lydstyrken kan ikke være højere end 200. Ønsker du at skade din hørelse eller højttalere? Hmmm, det tror jeg ikke er en god idé.",
+            "set": "Indstillede lydstyrken til {volume}"
+        }
+    },
+    "addsong": {
+        "description": "Tilføjer en sang til en gemt playliste",
+        "options": {
+            "playlist": "Playlisten du ønsker at tilføje til",
+            "song": "Sangen du ønsker at tilføje"
+        },
+        "messages": {
+            "no_playlist": "Angiv venligst en playliste",
+            "no_song": "Angiv venligst en sang",
+            "playlist_not_found": "Denne playliste eksisterer ikke",
+            "no_songs_found": "Ingen sange fundet",
+            "added": "Tilføjede {count} sang(e) til {playlist}"
+        }
+    },
+    "create": {
+        "description": "Opretter en ny playliste.",
+        "options": {
+            "name": "Navnet på playlisten"
+        },
+        "messages": {
+            "name_too_long": "Playlistenavne kan kun være 50 tegn lange.",
+            "playlist_exists": "En playliste med det navn eksisterer allerede. Brug venligst et andet navn.",
+            "playlist_created": "Playliste **{name}** er blevet oprettet.",
+            "name_empty": "Du skal angive et playlistenavn."
+        }
+    },
+    "delete": {
+        "description": "Sletter en playliste",
+        "options": {
+            "playlist": "Den playliste du ønsker at slette"
+        },
+        "messages": {
+            "playlist_not_found": "Denne playliste eksisterer ikke.",
+            "playlist_deleted": "Slettede playliste **{playlistName}**."
+        }
+    },
+    "list": {
+        "description": "Lister alle playlister for en bruger",
+        "options": {
+            "user": "Brugeren hvis playlister du ønsker at hente"
+        },
+        "messages": {
+            "no_playlists": "Denne bruger har ingen playlister.",
+            "your": "Dine",
+            "playlists_title": "{username}'s playlister",
+            "error": "Der opstod en fejl under hentning af playlisterne.",
+            "invalid_username": "Ugyldigt brugernavn eller bruger ikke fundet.",
+            "invalid_userid": "Ugyldigt bruger-ID."
+        }
+    },
+    "load": {
+        "description": "Indlæser en gemt playliste i køen.",
+        "options": {
+            "playlist": "Den playliste du ønsker at indlæse"
+        },
+        "messages": {
+            "playlist_not_exist": "Denne playliste eksisterer ikke.",
+            "playlist_empty": "Denne playliste er tom.",
+            "playlist_loaded": "Indlæste `{name}` med `{count}` sange.",
+            "no_lavalink_nodes": "Der er ingen tilgængelige Lavalink-noder til at indlæse playlisten."
+        }
+    },
+    "removesong": {
+        "description": "Fjerner en sang fra en playliste",
+        "options": {
+            "playlist": "Den playliste du ønsker at fjerne fra",
+            "song": "Den sang du ønsker at fjerne"
+        },
+        "messages": {
+            "provide_playlist": "Angiv venligst en playliste.",
+            "provide_song": "Angiv venligst en sang.",
+            "playlist_not_exist": "Denne playliste eksisterer ikke.",
+            "song_not_found": "Ingen matchende sang fundet.",
+            "song_removed": "Fjernede {song} fra {playlist}.",
+            "error_occurred": "Der opstod en fejl under fjernelse af sangen."
+        }
+    },
+    "steal": {
+        "description": "Stjæler en playliste fra en anden bruger og tilføjer den til dine playlister",
+        "options": {
+            "playlist": "Den playliste du ønsker at stjæle",
+            "user": "Brugeren fra hvem du ønsker at stjæle playlisten"
+        },
+        "messages": {
+            "provide_playlist": "Angiv venligst et playlistenavn.",
+            "provide_user": "Nævn venligst en bruger.",
+            "playlist_not_exist": "Denne playliste eksisterer ikke for den nævnte bruger.",
+            "playlist_exists": "Du har allerede en playliste ved navn `{playlist}`.",
+            "playlist_stolen": "Stjal succesfuldt playlisten `{playlist}` fra {user}.",
+            "error_occurred": "Der opstod en fejl under tyveri af playlisten."
+        }
+    },
+    "movenode": {
+        "description": "Flyt afspillere til en anden Lavalink-node",
+        "options": {
+            "node": "Node-ID'et for at flytte afspillerne"
+        },
+        "messages": {
+            "no_player": "Der er ingen aktiv musikafspiller på denne server.",
+            "no_available_nodes": "Der er ingen tilgængelige noder at flytte til.",
+            "available_nodes_title": "Tilgængelige noder",
+            "current_node": "Nuværende node",
+            "available_nodes": "Tilgængelige noder",
+            "usage_hint": "Brug: movenode <nodeId>",
+            "node_not_found": "Node `{node}` blev ikke fundet.",
+            "node_not_connected": "Node `{node}` er ikke forbundet.",
+            "same_node": "Afspilleren er allerede på node `{node}`.",
+            "moving": "Flytter afspiller fra `{from}` til `{to}`...",
+            "success_title": "Afspiller flyttet med succes",
+            "success_description": "Afspiller er blevet flyttet fra `{from}` til `{to}`.",
+            "error": "Kunne ikke flytte afspiller: {error}",
+            "moving_all_players": "Flytter alle afspillere til node `{node}`...",
+            "results_title": "MoveNode Resultater",
+            "moved_players": "**Flyttede afspillere i guilds:**\n{list}",
+            "guild_move": "• `{guildId}` ({from} → {to})",
+            "failed_moves": "**Kunne ikke flytte afspillere i guilds:**\n{list}",
+            "guild_move_failed": "• `{guildId}`: {error}",
+            "no_players_moved": "Ingen afspillere behøvede at blive flyttet.",
+            "unknown_error": "Ukendt fejl",
+            "no_players": "Der er ingen afspillere at flytte."
+        }
+    }
+}
