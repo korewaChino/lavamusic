@@ -23,14 +23,10 @@ export default class Context {
 	public ctx: ChatInputCommandInteraction | Message;
 	public interaction: ChatInputCommandInteraction | null;
 	public message: Message | null;
-	public id: string;
-	public channelId: string;
 	public client: Lavamusic;
 	public author: User | null;
 	public channel: TextBasedChannel;
 	public guild: Guild;
-	public createdAt: Date;
-	public createdTimestamp: number;
 	public member: GuildMemberResolvable | GuildMember | APIInteractionGuildMember | null;
 	public args: any[];
 	public msg: any;
@@ -41,33 +37,24 @@ export default class Context {
 		this.interaction = ctx instanceof ChatInputCommandInteraction ? ctx : null;
 		this.message = ctx instanceof Message ? ctx : null;
 		this.channel = ctx.channel!;
-		this.id = ctx.id;
-		this.channelId = ctx.channelId;
 		this.client = ctx.client as Lavamusic;
 		this.author = ctx instanceof Message ? ctx.author : ctx.user;
 		this.guild = ctx.guild!;
-		this.createdAt = ctx.createdAt;
-		this.createdTimestamp = ctx.createdTimestamp;
 		this.member = ctx.member;
-		this.args = args;
-		this.setArgs(args);
+		this.args = this.interaction ? args.map((arg: any) => arg.value) : args;
 		this.setUpLocale();
 	}
 
 	private async setUpLocale(): Promise<void> {
-		const defaultLanguage = env.DEFAULT_LANGUAGE || Locale.EnglishUS;
 		this.guildLocale = this.guild
 			? await this.client.db.getLanguage(this.guild.id)
-			: defaultLanguage;
+			: env.DEFAULT_LANGUAGE || Locale.EnglishUS;
 	}
 
 	public get isInteraction(): boolean {
 		return this.ctx instanceof ChatInputCommandInteraction;
 	}
 
-	public setArgs(args: any[]): void {
-		this.args = this.isInteraction ? args.map((arg: { value: any }) => arg.value) : args;
-	}
 
 	public async sendMessage(
 		content: string | MessagePayload | MessageCreateOptions | InteractionReplyOptions,

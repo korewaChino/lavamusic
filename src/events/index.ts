@@ -9,7 +9,6 @@ import InteractionCreate from "./client/InteractionCreate";
 import MessageCreate from "./client/MessageCreate";
 import Raw from "./client/Raw";
 import Ready from "./client/Ready";
-import SetupButtons from "./client/SetupButtons";
 import SetupSystem from "./client/SetupSystem";
 import VoiceStateUpdate from "./client/VoiceStateUpdate";
 import Connect from "./node/Connect";
@@ -33,7 +32,6 @@ export const EventList = [
 	MessageCreate,
 	Raw,
 	Ready,
-	SetupButtons,
 	SetupSystem,
 	VoiceStateUpdate,
 	Connect,

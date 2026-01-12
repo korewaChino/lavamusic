@@ -48,10 +48,8 @@ export default class LavalinkClient extends LavalinkManager {
 		user: unknown,
 		source?: SearchPlatform,
 	): Promise<SearchResult> {
-		const nodes = this.nodeManager.leastUsedNodes();
-		const node = nodes[Math.floor(Math.random() * nodes.length)];
-		const searchOptions = typeof query === "string" ? { query, source } : query;
-		return await node.search(searchOptions, user, false);
+		const node = this.nodeManager.leastUsedNodes()[0];
+		return await node.search(typeof query === "string" ? { query, source } : query, user, false);
 	}
 }
 

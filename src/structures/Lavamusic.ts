@@ -5,23 +5,22 @@ import {
 	Client,
 	Collection,
 	EmbedBuilder,
-	Events,
-	type Interaction,
 	Locale,
 	PermissionsBitField,
 	REST,
 	type RESTPostAPIChatInputApplicationCommandsJSONBody,
 	Routes,
 } from "discord.js";
-import { CommandList } from "../commands";
 import config from "../config";
 import ServerData from "../database/server";
-import { env } from "../env";
+import { CommandList } from "../commands";
 import { EventList } from "../events";
+import { ComponentList } from "../components";
+import { env } from "../env";
 import { LavamusicEventType } from "../types/events";
 import * as Utils from "../utils/Utils";
 import { initI18n, resolveLocalizations, t } from "./I18n";
-import type { Command } from "./index";
+import { Component, type Command } from "./index";
 import LavalinkClient from "./LavalinkClient";
 import logger from "./Logger";
 
@@ -30,6 +29,7 @@ export default class Lavamusic extends Client {
 	public commands: Collection<string, Command> = new Collection();
 	public aliases: Collection<string, string> = new Collection();
 	public cooldown: Collection<string, any> = new Collection();
+	public components: Collection<string, Component> = new Collection();
 
 	// Database and config
 	public db = new ServerData();
@@ -69,41 +69,18 @@ export default class Lavamusic extends Client {
 
 		try {
 			this.loadCommands();
-			logger.info(`Successfully loaded ${this.commands.size} commands!`);
-
 			this.loadEvents();
-			logger.info(`Successfully loaded events!`);
+			this.loadComponents();
+			logger.info("Commands, Events, and Components loaded successfully!");
 
 			await this.login(token);
 		} catch (error) {
 			logger.error("Critical error during startup:", error);
 			process.exit(1);
 		}
-
-		this.setupInteractionListener();
 	}
 
-	/**
-	 * Setup interaction listener for buttons.
-	 */
-	private setupInteractionListener(): void {
-		this.on(Events.InteractionCreate, async (interaction: Interaction) => {
-			if (!interaction.isButton() || !interaction.guildId) return;
 
-			try {
-				const setup = await this.db.getSetup(interaction.guildId);
-				if (
-					setup &&
-					interaction.channelId === setup.textId &&
-					interaction.message.id === setup.messageId
-				) {
-					this.emit("setupButtons", interaction);
-				}
-			} catch (error) {
-				logger.error("Error handling setup buttons:", error);
-			}
-		});
-	}
 
 	/**
 	 * Loads commands from registry.
@@ -252,6 +229,24 @@ export default class Lavamusic extends Client {
 				}
 			} catch (error) {
 				logger.error(`Failed to load event ${EventClass.name}:`, error);
+			}
+		}
+	}
+
+	/**
+	 * Loads components from registry
+	 */
+	private loadComponents(): void {
+		for (const ComponentClass of ComponentList) {
+			try {
+				const component = new (ComponentClass as any)(this, ComponentClass.name);
+				this.components.set(component.name, component);
+
+				for (const alias of component.aliases) {
+					this.components.set(alias, component);
+				}
+			} catch (error) {
+				logger.error(`Failed to load component ${ComponentClass.name}:`, error);
 			}
 		}
 	}

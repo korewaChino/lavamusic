@@ -1,13 +1,9 @@
 import {
 	type ColorResolvable,
-	ContainerBuilder,
 	EmbedBuilder,
 	type Guild,
-	MediaGalleryBuilder,
-	MediaGalleryItemBuilder,
 	type Message,
 	MessageFlags,
-	SectionBuilder,
 	type TextChannel,
 } from "discord.js";
 import type { Player, Track } from "lavalink-client";
@@ -166,9 +162,6 @@ async function trackStart(
 	client: Lavamusic,
 	locale: string,
 ): Promise<void> {
-	const icon = player.queue.current
-		? player.queue.current.info.artworkUrl
-		: client.config.links.img;
 	let m: Message | undefined;
 
 	try {
@@ -180,46 +173,36 @@ async function trackStart(
 	const iconUrl =
 		client.config.icons[player.queue.current!.info.sourceName] ||
 		client.user!.displayAvatarURL({ extension: "png" });
-	const description = t(I18N.player.setupStart.description, {
-		lng: locale,
-		title: track.info.title,
-		uri: track.info.uri,
-		author: track.info.author,
-		length: client.utils.formatTime(track.info.duration),
-		requester: (player.queue.current!.requester as Requester).id,
-	});
 
-	const mainSection = new SectionBuilder().addTextDisplayComponents((td) =>
-		td.setContent(description),
-	);
+	const embed = new EmbedBuilder()
+		.setAuthor({
+			name: t(I18N.player.setupStart.now_playing, { lng: locale }),
+			iconURL: iconUrl,
+		})
+		.setDescription(t(I18N.player.setupStart.description, {
+			lng: locale,
+			title: track.info.title,
+			uri: track.info.uri,
+			author: track.info.author,
+			length: client.utils.formatTime(track.info.duration),
+			requester: (player.queue.current!.requester as Requester).id,
+		}))
+		.setColor(client.color.main);
 
 	if (track.info.artworkUrl) {
-		mainSection.setThumbnailAccessory((th) =>
-			th.setURL(track.info.artworkUrl!).setDescription(`Artwork for ${track.info.title}`),
-		);
+		embed.setImage(track.info.artworkUrl);
 	}
-
-	const container = new ContainerBuilder()
-		.setAccentColor(client.color.main)
-		.addSectionComponents(mainSection)
-		.addMediaGalleryComponents(
-			new MediaGalleryBuilder().addItems(
-				new MediaGalleryItemBuilder().setURL(icon || iconUrl).setDescription(`Artwork for ${track.info.title}`),
-			),
-		);
 
 	if (m) {
 		await m
 			.edit({
-				components: [
-					container,
-					...getButtons(player).map((b) => {
-						b.components.forEach((c) => {
-							c.setDisabled(!player?.queue.current);
-						});
-						return b;
-					}),
-				],
+				embeds: [embed],
+				components: getButtons(player).map((b) => {
+					b.components.forEach((c) => {
+						c.setDisabled(!player?.queue.current);
+					});
+					return b;
+				}),
 			})
 			.catch(() => {
 				null;
@@ -227,16 +210,13 @@ async function trackStart(
 	} else {
 		await channel
 			.send({
-				components: [
-					container,
-					...getButtons(player).map((b) => {
-						b.components.forEach((c) => {
-							c.setDisabled(!player?.queue.current);
-						});
-						return b;
-					}),
-				],
-				flags: MessageFlags.IsComponentsV2,
+				embeds: [embed],
+				components: getButtons(player).map((b) => {
+					b.components.forEach((c) => {
+						c.setDisabled(!player?.queue.current);
+					});
+					return b;
+				}),
 			})
 			.then((msg) => {
 				client.db.setSetup(msg.guild.id, msg.id, msg.channel.id);
@@ -265,66 +245,56 @@ async function updateSetup(client: Lavamusic, guild: Guild, locale: string): Pro
 	if (m) {
 		const player = client.manager.getPlayer(guild.id);
 		if (player?.queue.current) {
-			const description = t(I18N.player.setupStart.description, {
-				lng: locale,
-				title: player.queue.current.info.title,
-				uri: player.queue.current.info.uri,
-				author: player.queue.current.info.author,
-				length: client.utils.formatTime(player.queue.current.info.duration),
-				requester: (player.queue.current.requester as Requester).id,
-			});
+			const iconUrl =
+				client.config.icons[player.queue.current.info.sourceName] ||
+				client.user!.displayAvatarURL({ extension: "png" });
 
-			const mainSection = new SectionBuilder().addTextDisplayComponents((td) =>
-				td.setContent(description),
-			);
+			const embed = new EmbedBuilder()
+				.setAuthor({
+					name: t(I18N.player.setupStart.now_playing, { lng: locale }),
+					iconURL: iconUrl,
+				})
+				.setDescription(t(I18N.player.setupStart.description, {
+					lng: locale,
+					title: player.queue.current.info.title,
+					uri: player.queue.current.info.uri,
+					author: player.queue.current.info.author,
+					length: client.utils.formatTime(player.queue.current.info.duration),
+					requester: (player.queue.current.requester as Requester).id,
+				}))
+				.setColor(client.color.main);
 
 			if (player.queue.current.info.artworkUrl) {
-				mainSection.setThumbnailAccessory((th) =>
-					th
-						.setURL(player.queue.current!.info.artworkUrl!)
-						.setDescription(`Artwork for ${player.queue.current!.info.title}`),
-				);
+				embed.setImage(player.queue.current.info.artworkUrl);
 			}
-
-			const container = new ContainerBuilder()
-				.setAccentColor(client.color.main)
-				.addSectionComponents(mainSection);
 
 			await m
 				.edit({
-					components: [
-						container,
-						...getButtons(player).map((b) => {
-							b.components.forEach((c) => {
-								c.setDisabled(!player?.queue.current);
-							});
-							return b;
-						}),
-					],
+					embeds: [embed],
+					components: getButtons(player).map((b) => {
+						b.components.forEach((c) => {
+							c.setDisabled(!player?.queue.current);
+						});
+						return b;
+					}),
 				})
 				.catch(() => {
 					null;
 				});
 		} else {
-			const container = new ContainerBuilder()
-				.setAccentColor(client.color.main)
-				.addSectionComponents(
-					new SectionBuilder().addTextDisplayComponents((td) =>
-						td.setContent(t(I18N.player.setupStart.nothing_playing, { lng: locale })),
-					),
-				);
+			const embed = new EmbedBuilder()
+				.setColor(client.color.main)
+				.setDescription(t(I18N.player.setupStart.nothing_playing, { lng: locale }));
 
 			await m
 				.edit({
-					components: [
-						container,
-						...getButtons(player!).map((b) => {
-							b.components.forEach((c) => {
-								c.setDisabled(true);
-							});
-							return b;
-						}),
-					],
+					embeds: [embed],
+					components: getButtons(player!).map((b) => {
+						b.components.forEach((c) => {
+							c.setDisabled(true);
+						});
+						return b;
+					}),
 				})
 				.catch(() => {
 					null;

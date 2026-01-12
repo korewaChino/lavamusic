@@ -63,7 +63,6 @@ export default class MessageCreate extends Event {
 		if (!command) return;
 
 		const ctx = new Context(message, args);
-		ctx.setArgs(args);
 		ctx.guildLocale = locale;
 
 		const clientMember = message.guild.members.resolve(this.client.user!)!;

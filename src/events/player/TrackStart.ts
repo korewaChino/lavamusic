@@ -4,13 +4,11 @@ import {
 	type ButtonInteraction,
 	ButtonStyle,
 	type ChannelSelectMenuInteraction,
-	ContainerBuilder,
+	EmbedBuilder,
 	type MentionableSelectMenuInteraction,
-	MessageFlags,
 	PermissionFlagsBits,
 	type RoleSelectMenuInteraction,
 	type StringSelectMenuInteraction,
-	SectionBuilder,
 	type TextChannel,
 	type UserSelectMenuInteraction,
 } from "discord.js";
@@ -47,25 +45,23 @@ export default class TrackStart extends Event {
 			);
 		}
 
-		const trackInfo = `**[${track.info.title}](${track.info.uri})**\n` +
-			`-# ${t(I18N.player.trackStart.author)}: ${track.info.author}\n` +
-			`-# ${t(I18N.player.trackStart.duration)}: ${track.info.isStream ? "LIVE" : this.client.utils.formatTime(track.info.duration)}\n` +
-			`-# ${t(I18N.player.trackStart.requested_by, { user: (track.requester as Requester).username })}`;
-
-		const mainSection = new SectionBuilder().addTextDisplayComponents((td) =>
-			td.setContent(trackInfo),
-		);
+		const embed = new EmbedBuilder()
+			.setAuthor({
+				name: t(I18N.player.trackStart.now_playing, { lng: locale }),
+				iconURL: this.client.config.icons[track.info.sourceName] || this.client.user?.displayAvatarURL(),
+			})
+			.setDescription(
+				`**[${track.info.title}](${track.info.uri})**\n` +
+				`-# ${t(I18N.player.trackStart.author)}: ${track.info.author}\n` +
+				`-# ${t(I18N.player.trackStart.duration)}: ${track.info.isStream ? "LIVE" : this.client.utils.formatTime(track.info.duration)}\n` +
+				`-# ${t(I18N.player.trackStart.requested_by, { user: (track.requester as Requester).username })}`
+			)
+			.setColor(this.client.color.main);
 
 		if (track.info.artworkUrl) {
-			mainSection.setThumbnailAccessory((th) =>
-				th.setURL(track.info.artworkUrl!).setDescription(`Artwork for ${track.info.title}`),
-			);
+			embed.setThumbnail(track.info.artworkUrl);
 		}
 
-		const container = new ContainerBuilder()
-			.setAccentColor(this.client.color.main)
-			.addSectionComponents(mainSection)
-			.addActionRowComponents(createButtonRow(player));
 		const setup = await this.client.db.getSetup(guild.id);
 
 		if (setup?.textId) {
@@ -75,8 +71,8 @@ export default class TrackStart extends Event {
 			}
 		} else {
 			const message = await channel.send({
-				components: [container],
-				flags: MessageFlags.IsComponentsV2,
+				embeds: [embed],
+				components: [createButtonRow(player)],
 			});
 
 			player.set("messageId", message.id);
@@ -87,42 +83,30 @@ export default class TrackStart extends Event {
 export function createButtonRow(
 	player: Player
 ): ActionRowBuilder<ButtonBuilder> {
-	const previousButton = new ButtonBuilder()
-		.setCustomId("previous")
-		.setLabel(t(I18N.buttons.previous))
-		.setStyle(ButtonStyle.Secondary)
-		.setDisabled(!player.queue.previous || player.queue.previous.length === 0);
-
-	const resumeButton = new ButtonBuilder()
-		.setCustomId("resume")
-		.setLabel(player.paused ? t(I18N.buttons.resume) : t(I18N.buttons.pause))
-		.setStyle(player.paused ? ButtonStyle.Success : ButtonStyle.Secondary);
-
-	const stopButton = new ButtonBuilder()
-		.setCustomId("stop")
-		.setLabel(t(I18N.buttons.stop))
-		.setStyle(ButtonStyle.Danger);
-
-	const skipButton = new ButtonBuilder()
-		.setCustomId("skip")
-		.setLabel(t(I18N.buttons.skip))
-		.setStyle(ButtonStyle.Secondary);
-
-	const loopButton = new ButtonBuilder()
-		.setCustomId("loop")
-		.setLabel(t(I18N.buttons.loop))
-		.setStyle(player.repeatMode !== "off" ? ButtonStyle.Success : ButtonStyle.Secondary);
-
 	return new ActionRowBuilder<ButtonBuilder>().addComponents(
-		resumeButton,
-		previousButton,
-		stopButton,
-		skipButton,
-		loopButton,
+		new ButtonBuilder()
+			.setCustomId("resume")
+			.setLabel(player.paused ? t(I18N.buttons.resume) : t(I18N.buttons.pause))
+			.setStyle(player.paused ? ButtonStyle.Success : ButtonStyle.Secondary),
+		new ButtonBuilder()
+			.setCustomId("previous")
+			.setLabel(t(I18N.buttons.previous))
+			.setStyle(ButtonStyle.Secondary)
+			.setDisabled(!player.queue.previous || player.queue.previous.length === 0),
+		new ButtonBuilder()
+			.setCustomId("stop")
+			.setLabel(t(I18N.buttons.stop))
+			.setStyle(ButtonStyle.Danger),
+		new ButtonBuilder()
+			.setCustomId("skip")
+			.setLabel(t(I18N.buttons.skip))
+			.setStyle(ButtonStyle.Secondary),
+		new ButtonBuilder()
+			.setCustomId("loop")
+			.setLabel(t(I18N.buttons.loop))
+			.setStyle(player.repeatMode !== "off" ? ButtonStyle.Success : ButtonStyle.Secondary),
 	);
 }
-
-
 
 export async function checkDj(
 	client: Lavamusic,

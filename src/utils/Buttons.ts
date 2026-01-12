@@ -9,61 +9,66 @@ import { I18N, t } from "../structures/I18n";
 function getButtons(player: Player): ActionRowBuilder<ButtonBuilder>[] {
 	const buttonData = [
 		{
-			customId: "PREV_BUT",
-			label: t(I18N.buttons.previous),
+			customId: "previous",
 			style: ButtonStyle.Secondary,
+			emoji: "⏮️",
 		},
 		{
-			customId: "REWIND_BUT",
-			label: t(I18N.buttons.rewind),
+			customId: "rewind",
 			style: ButtonStyle.Secondary,
+			emoji: "⏪",
 		},
 		{
-			customId: "PAUSE_BUT",
-			label: player?.paused ? t(I18N.buttons.resume) : t(I18N.buttons.pause),
+			customId: "resume",
 			style: player?.paused ? ButtonStyle.Success : ButtonStyle.Secondary,
+			emoji: player?.paused ? "▶️" : "⏸️",
 		},
 		{
-			customId: "FORWARD_BUT",
-			label: t(I18N.buttons.forward),
+			customId: "forward",
 			style: ButtonStyle.Secondary,
+			emoji: "⏩",
 		},
 		{
-			customId: "SKIP_BUT",
+			customId: "skip",
 			label: t(I18N.buttons.skip),
 			style: ButtonStyle.Secondary,
+			emoji: "⏭️",
 		},
 		{
-			customId: "LOW_VOL_BUT",
-			label: t(I18N.buttons.volume_down),
+			customId: "vol_down",
 			style: ButtonStyle.Secondary,
+			emoji: "🔉",
 		},
 		{
-			customId: "LOOP_BUT",
-			label: t(I18N.buttons.loop),
-			style: ButtonStyle.Secondary,
+			customId: "loop",
+			style: player?.repeatMode !== "off" ? ButtonStyle.Success : ButtonStyle.Secondary,
+			emoji: "🔁",
 		},
 		{
-			customId: "STOP_BUT",
-			label: t(I18N.buttons.stop),
+			customId: "stop",
 			style: ButtonStyle.Danger,
+			emoji: "⏹️",
 		},
 		{
-			customId: "SHUFFLE_BUT",
+			customId: "shuffle",
 			label: t(I18N.buttons.shuffle),
 			style: ButtonStyle.Secondary,
+			emoji: "🔀",
 		},
 		{
-			customId: "HIGH_VOL_BUT",
-			label: t(I18N.buttons.volume_up),
+			customId: "vol_up",
 			style: ButtonStyle.Secondary,
+			emoji: "🔊",
 		},
 	];
 
-	return buttonData.reduce((rows, { customId, label, style }, index) => {
+	return buttonData.reduce((rows, { customId, style, emoji }, index) => {
 		if (index % 5 === 0) rows.push(new ActionRowBuilder<ButtonBuilder>());
 
-		const button = new ButtonBuilder().setCustomId(customId).setLabel(label).setStyle(style);
+		const button = new ButtonBuilder()
+			.setCustomId(customId)
+			.setStyle(style)
+			.setEmoji(emoji);
 		rows[rows.length - 1].addComponents(button);
 		return rows;
 	}, [] as ActionRowBuilder<ButtonBuilder>[]);
